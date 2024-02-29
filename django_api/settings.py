@@ -75,7 +75,7 @@ CORS_ALLOW_HEADERS = (
 
 CORS_ORIGIN_WHITELIST = [
     # Preferred Origins here....
-    "https://billy-06.github.io",
+    "https://isaac-chow.github.io",
     "http://127.0.0.1:3000"
 ]
 
