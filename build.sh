@@ -12,3 +12,4 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 
+# python -m gunicorn django_api.asgi:application -k uvicorn.workers.UvicornWorker

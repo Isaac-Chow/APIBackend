@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "https://apibackend-1.onrender.com",
-    "127.0.0.1"
+    "localhost"
 ]
 
 
@@ -82,7 +82,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000"
 ]
 
-APPEND_SLASH=False
+APPEND_SLASH=True
 
 ROOT_URLCONF = 'django_api.urls'
 
