@@ -80,9 +80,9 @@ class ProjectDetails(APIView):
         try:
             project = Project.objects.get(pk=pk)
             serializer = ProjectSerializer(project)
-            return HttpResponse(serializer.data)
+            return HttpResponse((json_renderer.renderserializer.data))
         except Project.DoesNotExist:
-            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+            return HttpResponse(json_renderer.render(status=status.HTTP_404_NOT_FOUND))
 
     def put(self, request, pk):
         try:
@@ -90,18 +90,18 @@ class ProjectDetails(APIView):
             serializer = ProjectSerializer(project, data=request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response(serializer.data)
-            return HttpResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return HttpResponse(json_renderer.render(serializer.data))
+            return HttpResponse(json_renderer.render(serializer.errors, status=status.HTTP_400_BAD_REQUEST))
         except Project.DoesNotExist:
-            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+            return HttpResponse(json_renderer.render(status=status.HTTP_404_NOT_FOUND))
 
     def delete(self, request, pk):
         try:
             project = Project.objects.get(pk=pk)
             project.delete()
-            return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+            return HttpResponse(json_renderer.render(status=status.HTTP_204_NO_CONTENT))
         except Project.DoesNotExist:
-            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+            return HttpResponse(json_renderer.render(status=status.HTTP_404_NOT_FOUND))
     
 
 # Class-based Project List views implementing, GET, and POST methods
