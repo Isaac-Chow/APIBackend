@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)vz-wml80hv1-9_l8u-ofoc)qm%@3x1mgff!gedcjiftr=st75
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://apibackend-1.onrender.com",
+    "https://apibackend-env5.onrender.com",
     "localhost"
 ]
 
