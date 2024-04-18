@@ -80,7 +80,7 @@ class ProjectDetails(APIView):
         try:
             project = Project.objects.get(pk=pk)
             serializer = ProjectSerializer(project)
-            return HttpResponse((json_renderer.renderserializer.data))
+            return HttpResponse(json_renderer.render(serializer.data))
         except Project.DoesNotExist:
             return HttpResponse(json_renderer.render(status=status.HTTP_404_NOT_FOUND))
 
@@ -90,8 +90,8 @@ class ProjectDetails(APIView):
             serializer = ProjectSerializer(project, data=request.data)
             if serializer.is_valid():
                 serializer.save()
-                return HttpResponse(json_renderer.render(serializer.data))
-            return HttpResponse(json_renderer.render(serializer.errors, status=status.HTTP_400_BAD_REQUEST))
+                return HttpResponse(json_parser.parse(serializer.data))
+            return HttpResponse(json_parser.parse(serializer.errors, status=status.HTTP_400_BAD_REQUEST))
         except Project.DoesNotExist:
             return HttpResponse(json_renderer.render(status=status.HTTP_404_NOT_FOUND))
 
